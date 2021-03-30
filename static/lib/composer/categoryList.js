@@ -18,10 +18,14 @@ define('composer/categoryList', ['categorySelector', 'taskbar'], function (categ
 			toggleDropDirection(postContainer);
 		});
 
-		socket.emit('plugins.composer.getCategoriesForSelect', {}, function (err, categories) {
+		socket.emit('plugins.composer.getCategoriesForSelect', {}, function (err, _categories) {
 			if (err) {
 				return app.alertError(err.message);
 			}
+
+			const categories = _categories
+				.filter(c => c.cid == postData.cid);
+
 			// Save hash for queries
 			categoryList._map = categories.reduce(function (memo, cur) {
 				memo[cur.cid] = cur;
