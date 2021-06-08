@@ -82,17 +82,17 @@ plugin.getFormattingOptions = async function () {
 					desktop: false,
 				}
 			},
-			{ name: 'zen', title: '[[modules:composer.zen_mode]]', className: 'fa fa-arrows-alt', title: '[[modules:composer.zen_mode]]', visibility: defaultVisibility },
+			// { name: 'zen', title: '[[modules:composer.zen_mode]]', className: 'fa fa-arrows-alt', title: '[[modules:composer.zen_mode]]', visibility: defaultVisibility },
 		],
 	};
-	if (parseInt(meta.config.allowTopicsThumbnail, 10) === 1) {
-		payload.options.push({ name: 'thumbs', title: '[[topic:composer.thumb_title]]', className: 'fa fa-address-card-o',
-			visibility: {
-				...defaultVisibility,
-				reply: false,
-			},
-		});
-	}
+	// if (parseInt(meta.config.allowTopicsThumbnail, 10) === 1) {
+	// 	payload.options.push({ name: 'thumbs', title: '[[topic:composer.thumb_title]]', className: 'fa fa-address-card-o',
+	// 		visibility: {
+	// 			...defaultVisibility,
+	// 			reply: false,
+	// 		},
+	// 	});
+	// }
 
 	payload = await plugins.fireHook('filter:composer.formatting', payload);
 
